@@ -1,0 +1,206 @@
+EDA Netlist Writer report for sha3_final
+Sat Jan 01 00:04:28 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. EDA Netlist Writer Summary
+  3. EDA Netlist Writer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------+
+; EDA Netlist Writer Summary                                        ;
++---------------------------+---------------------------------------+
+; EDA Netlist Writer Status ; Successful - Sat Jan 01 00:04:28 2022 ;
+; Revision Name             ; sha3_final                            ;
+; Top-level Entity Name     ; sha3_final                            ;
+; Family                    ; Cyclone V                             ;
++---------------------------+---------------------------------------+
+
+
++-----------------------------+
+; EDA Netlist Writer Messages ;
++-----------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime EDA Netlist Writer
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Copyright (C) 2020  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and any partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details, at
+    Info: https://fpgasoftware.intel.com/eula.
+    Info: Processing started: Sat Jan 01 00:04:27 2022
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off sha3_final -c sha3_final --vector_source=C:/FPGA/Waveform1.vwf --testbench_file=C:/FPGA/simulation/modelsim/Waveform1.vwf.vht
+Info (119006): Selected device 5CSXFC6D6F31C6 for design "sha3_final"
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Warning (201005): Ignoring output pin "in_ena_o" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[0]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[1]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[2]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[3]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[4]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[5]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[6]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[7]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[8]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[9]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[10]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[11]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[12]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[13]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[14]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[15]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[16]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[17]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[18]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[19]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[20]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[21]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[22]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[23]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[24]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[25]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[26]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[27]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[28]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[29]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[30]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[31]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[32]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[33]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[34]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[35]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[36]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[37]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[38]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[39]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[40]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[41]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[42]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[43]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[44]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[45]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[46]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[47]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[48]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[49]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[50]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[51]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[52]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[53]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[54]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[55]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[56]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[57]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[58]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[59]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[60]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[61]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[62]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[63]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[64]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[65]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[66]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[67]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[68]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[69]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[70]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[71]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[72]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[73]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[74]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[75]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[76]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[77]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[78]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[79]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[80]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[81]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[82]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[83]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[84]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[85]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[86]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[87]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[88]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[89]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[90]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[91]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[92]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[93]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[94]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[95]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[96]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[97]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[98]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[99]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[100]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[101]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[102]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[103]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[104]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[105]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[106]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[107]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[108]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[109]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[110]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[111]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[112]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[113]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[114]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[115]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[116]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[117]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[118]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[119]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[120]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[121]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[122]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[123]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[124]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[125]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[126]" in vector source file when writing test bench files
+Warning (201005): Ignoring output pin "digest[127]" in vector source file when writing test bench files
+Info (201002): Generated VHDL Test Bench File C:/FPGA/simulation/modelsim/Waveform1.vwf.vht for simulation
+Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 131 warnings
+    Info: Peak virtual memory: 4735 megabytes
+    Info: Processing ended: Sat Jan 01 00:04:28 2022
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

@@ -1,0 +1,741 @@
+Analysis & Synthesis report for tunable_keccak_core
+Mon Jan 02 05:19:33 2023
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |tunable_keccak_core|tunable_keccak:sha3|pr_state
+ 10. Registers Protected by Synthesis
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated
+ 17. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_cu6:rdptr_g1p
+ 18. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_7cc:wrptr_g1p
+ 19. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|altsyncram_tr91:fifo_ram
+ 20. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp
+ 21. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10
+ 22. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|dffpipe_3dc:wraclr
+ 23. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp
+ 24. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15
+ 25. Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|cntr_psd:cntr_b
+ 26. Parameter Settings for User Entity Instance: dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component
+ 27. Port Connectivity Checks: "tunable_keccak:sha3|state_reg:reg_lower"
+ 28. Port Connectivity Checks: "tunable_keccak:sha3|keccak_sponge_round:c"
+ 29. Port Connectivity Checks: "dsffo:fifo"
+ 30. Post-Synthesis Netlist Statistics for Top Partition
+ 31. Elapsed Time Per Partition
+ 32. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Jan 02 05:19:33 2023       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; tunable_keccak_core                         ;
+; Top-level Entity Name           ; tunable_keccak_core                         ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 6302                                        ;
+; Total pins                      ; 155                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 4,096                                       ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                               ;
++---------------------------------------------------------------------------------+---------------------+---------------------+
+; Option                                                                          ; Setting             ; Default Value       ;
++---------------------------------------------------------------------------------+---------------------+---------------------+
+; Device                                                                          ; 5CSXFC6D6F31C6      ;                     ;
+; Top-level entity name                                                           ; tunable_keccak_core ; tunable_keccak_core ;
+; Family name                                                                     ; Cyclone V           ; Cyclone V           ;
+; Use smart compilation                                                           ; Off                 ; Off                 ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                  ; On                  ;
+; Enable compact report table                                                     ; Off                 ; Off                 ;
+; Restructure Multiplexers                                                        ; Auto                ; Auto                ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                 ; Off                 ;
+; Create Debugging Nodes for IP Cores                                             ; Off                 ; Off                 ;
+; Preserve fewer node names                                                       ; On                  ; On                  ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable              ; Enable              ;
+; Verilog Version                                                                 ; Verilog_2001        ; Verilog_2001        ;
+; VHDL Version                                                                    ; VHDL_1993           ; VHDL_1993           ;
+; State Machine Processing                                                        ; Auto                ; Auto                ;
+; Safe State Machine                                                              ; Off                 ; Off                 ;
+; Extract Verilog State Machines                                                  ; On                  ; On                  ;
+; Extract VHDL State Machines                                                     ; On                  ; On                  ;
+; Ignore Verilog initial constructs                                               ; Off                 ; Off                 ;
+; Iteration limit for constant Verilog loops                                      ; 5000                ; 5000                ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                 ; 250                 ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                  ; On                  ;
+; Infer RAMs from Raw Logic                                                       ; On                  ; On                  ;
+; Parallel Synthesis                                                              ; On                  ; On                  ;
+; DSP Block Balancing                                                             ; Auto                ; Auto                ;
+; NOT Gate Push-Back                                                              ; On                  ; On                  ;
+; Power-Up Don't Care                                                             ; On                  ; On                  ;
+; Remove Redundant Logic Cells                                                    ; Off                 ; Off                 ;
+; Remove Duplicate Registers                                                      ; On                  ; On                  ;
+; Ignore CARRY Buffers                                                            ; Off                 ; Off                 ;
+; Ignore CASCADE Buffers                                                          ; Off                 ; Off                 ;
+; Ignore GLOBAL Buffers                                                           ; Off                 ; Off                 ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                 ; Off                 ;
+; Ignore LCELL Buffers                                                            ; Off                 ; Off                 ;
+; Ignore SOFT Buffers                                                             ; On                  ; On                  ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                 ; Off                 ;
+; Optimization Technique                                                          ; Balanced            ; Balanced            ;
+; Carry Chain Length                                                              ; 70                  ; 70                  ;
+; Auto Carry Chains                                                               ; On                  ; On                  ;
+; Auto Open-Drain Pins                                                            ; On                  ; On                  ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                 ; Off                 ;
+; Auto ROM Replacement                                                            ; On                  ; On                  ;
+; Auto RAM Replacement                                                            ; On                  ; On                  ;
+; Auto DSP Block Replacement                                                      ; On                  ; On                  ;
+; Auto Shift Register Replacement                                                 ; Auto                ; Auto                ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto                ; Auto                ;
+; Auto Clock Enable Replacement                                                   ; On                  ; On                  ;
+; Strict RAM Replacement                                                          ; Off                 ; Off                 ;
+; Allow Synchronous Control Signals                                               ; On                  ; On                  ;
+; Force Use of Synchronous Clear Signals                                          ; Off                 ; Off                 ;
+; Auto Resource Sharing                                                           ; Off                 ; Off                 ;
+; Allow Any RAM Size For Recognition                                              ; Off                 ; Off                 ;
+; Allow Any ROM Size For Recognition                                              ; Off                 ; Off                 ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                 ; Off                 ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                  ; On                  ;
+; Ignore translate_off and synthesis_off directives                               ; Off                 ; Off                 ;
+; Timing-Driven Synthesis                                                         ; On                  ; On                  ;
+; Report Parameter Settings                                                       ; On                  ; On                  ;
+; Report Source Assignments                                                       ; On                  ; On                  ;
+; Report Connectivity Checks                                                      ; On                  ; On                  ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                 ; Off                 ;
+; Synchronization Register Chain Length                                           ; 3                   ; 3                   ;
+; Power Optimization During Synthesis                                             ; Normal compilation  ; Normal compilation  ;
+; HDL message level                                                               ; Level2              ; Level2              ;
+; Suppress Register Optimization Related Messages                                 ; Off                 ; Off                 ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000                ; 5000                ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000                ; 5000                ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                 ; 100                 ;
+; Clock MUX Protection                                                            ; On                  ; On                  ;
+; Auto Gated Clock Conversion                                                     ; Off                 ; Off                 ;
+; Block Design Naming                                                             ; Auto                ; Auto                ;
+; SDC constraint protection                                                       ; Off                 ; Off                 ;
+; Synthesis Effort                                                                ; Auto                ; Auto                ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                  ; On                  ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                 ; Off                 ;
+; Analysis & Synthesis Message Level                                              ; Medium              ; Medium              ;
+; Disable Register Merging Across Hierarchies                                     ; Auto                ; Auto                ;
+; Resource Aware Inference For Block RAM                                          ; On                  ; On                  ;
+; Automatic Parallel Synthesis                                                    ; On                  ; On                  ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                 ; Off                 ;
++---------------------------------------------------------------------------------+---------------------+---------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.23        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  22.7%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                            ;
++----------------------------------+-----------------+-----------------------------------+--------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                         ; File Name with Absolute Path                                                   ; Library ;
++----------------------------------+-----------------+-----------------------------------+--------------------------------------------------------------------------------+---------+
+; tunable_keccak_core.vhd          ; yes             ; User VHDL File                    ; C:/FPGA/tunable_keccak_core.vhd                                                ;         ;
+; dsffo.vhd                        ; yes             ; Auto-Found Wizard-Generated File  ; C:/FPGA/dsffo.vhd                                                              ;         ;
+; dcfifo_mixed_widths.tdf          ; yes             ; Megafunction                      ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/dcfifo_mixed_widths.tdf ;         ;
+; db/dcfifo_i5q1.tdf               ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/dcfifo_i5q1.tdf                                                     ;         ;
+; db/a_graycounter_cu6.tdf         ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/a_graycounter_cu6.tdf                                               ;         ;
+; db/a_graycounter_7cc.tdf         ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/a_graycounter_7cc.tdf                                               ;         ;
+; db/altsyncram_tr91.tdf           ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/altsyncram_tr91.tdf                                                 ;         ;
+; db/alt_synch_pipe_tnl.tdf        ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/alt_synch_pipe_tnl.tdf                                              ;         ;
+; db/dffpipe_ed9.tdf               ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/dffpipe_ed9.tdf                                                     ;         ;
+; db/dffpipe_3dc.tdf               ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/dffpipe_3dc.tdf                                                     ;         ;
+; db/alt_synch_pipe_unl.tdf        ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/alt_synch_pipe_unl.tdf                                              ;         ;
+; db/dffpipe_fd9.tdf               ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/dffpipe_fd9.tdf                                                     ;         ;
+; db/cmpr_ru5.tdf                  ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/cmpr_ru5.tdf                                                        ;         ;
+; db/cntr_psd.tdf                  ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/cntr_psd.tdf                                                        ;         ;
+; db/mux_5r7.tdf                   ; yes             ; Auto-Generated Megafunction       ; C:/FPGA/db/mux_5r7.tdf                                                         ;         ;
++----------------------------------+-----------------+-----------------------------------+--------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                 ;
++---------------------------------------------+---------------+
+; Resource                                    ; Usage         ;
++---------------------------------------------+---------------+
+; Estimate of Logic utilization (ALMs needed) ; 3512          ;
+;                                             ;               ;
+; Combinational ALUT usage for logic          ; 3949          ;
+;     -- 7 input functions                    ; 0             ;
+;     -- 6 input functions                    ; 545           ;
+;     -- 5 input functions                    ; 1793          ;
+;     -- 4 input functions                    ; 834           ;
+;     -- <=3 input functions                  ; 777           ;
+;                                             ;               ;
+; Dedicated logic registers                   ; 6302          ;
+;                                             ;               ;
+; I/O pins                                    ; 155           ;
+; Total MLAB memory bits                      ; 0             ;
+; Total block memory bits                     ; 4096          ;
+;                                             ;               ;
+; Total DSP Blocks                            ; 0             ;
+;                                             ;               ;
+; Maximum fan-out node                        ; sys_clk~input ;
+; Maximum fan-out                             ; 6279          ;
+; Total fan-out                               ; 47234         ;
+; Average fan-out                             ; 4.47          ;
++---------------------------------------------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                     ;
++-----------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                           ; Entity Name         ; Library Name ;
++-----------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |tunable_keccak_core                                      ; 3949 (0)            ; 6302 (0)                  ; 4096              ; 0          ; 155  ; 0            ; |tunable_keccak_core                                                                                                                                          ; tunable_keccak_core ; work         ;
+;    |dsffo:fifo|                                           ; 43 (0)              ; 66 (0)                    ; 4096              ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo                                                                                                                               ; dsffo               ; work         ;
+;       |dcfifo_mixed_widths:dcfifo_mixed_widths_component| ; 43 (0)              ; 66 (0)                    ; 4096              ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component                                                                             ; dcfifo_mixed_widths ; work         ;
+;          |dcfifo_i5q1:auto_generated|                     ; 43 (7)              ; 66 (25)                   ; 4096              ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated                                                  ; dcfifo_i5q1         ; work         ;
+;             |a_graycounter_7cc:wrptr_g1p|                 ; 9 (9)               ; 7 (7)                     ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_7cc:wrptr_g1p                      ; a_graycounter_7cc   ; work         ;
+;             |a_graycounter_cu6:rdptr_g1p|                 ; 10 (10)             ; 7 (7)                     ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_cu6:rdptr_g1p                      ; a_graycounter_cu6   ; work         ;
+;             |alt_synch_pipe_tnl:rs_dgwp|                  ; 0 (0)               ; 12 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp                       ; alt_synch_pipe_tnl  ; work         ;
+;                |dffpipe_ed9:dffpipe10|                    ; 0 (0)               ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10 ; dffpipe_ed9         ; work         ;
+;             |alt_synch_pipe_unl:ws_dgrp|                  ; 0 (0)               ; 12 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp                       ; alt_synch_pipe_unl  ; work         ;
+;                |dffpipe_fd9:dffpipe15|                    ; 0 (0)               ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15 ; dffpipe_fd9         ; work         ;
+;             |altsyncram_tr91:fifo_ram|                    ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|altsyncram_tr91:fifo_ram                         ; altsyncram_tr91     ; work         ;
+;             |cntr_psd:cntr_b|                             ; 5 (5)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|cntr_psd:cntr_b                                  ; cntr_psd            ; work         ;
+;             |mux_5r7:rdemp_eq_comp_lsb_mux|               ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|mux_5r7:rdemp_eq_comp_lsb_mux                    ; mux_5r7             ; work         ;
+;             |mux_5r7:rdemp_eq_comp_msb_mux|               ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|mux_5r7:rdemp_eq_comp_msb_mux                    ; mux_5r7             ; work         ;
+;             |mux_5r7:wrfull_eq_comp_lsb_mux|              ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|mux_5r7:wrfull_eq_comp_lsb_mux                   ; mux_5r7             ; work         ;
+;             |mux_5r7:wrfull_eq_comp_msb_mux|              ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|mux_5r7:wrfull_eq_comp_msb_mux                   ; mux_5r7             ; work         ;
+;    |tunable_keccak:sha3|                                  ; 3906 (1467)         ; 6236 (3036)               ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|tunable_keccak:sha3                                                                                                                      ; tunable_keccak      ; work         ;
+;       |keccak_sponge_round:c|                             ; 2439 (2439)         ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|tunable_keccak:sha3|keccak_sponge_round:c                                                                                                ; keccak_sponge_round ; work         ;
+;       |state_reg:reg_lower|                               ; 0 (0)               ; 1600 (1600)               ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|tunable_keccak:sha3|state_reg:reg_lower                                                                                                  ; state_reg           ; work         ;
+;       |state_reg:reg_upper|                               ; 0 (0)               ; 1600 (1600)               ; 0                 ; 0          ; 0    ; 0            ; |tunable_keccak_core|tunable_keccak:sha3|state_reg:reg_upper                                                                                                  ; state_reg           ; work         ;
++-----------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                ;
++-----------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                                                        ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-----------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|altsyncram_tr91:fifo_ram|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 256          ; 16           ; 32           ; 128          ; 4096 ; None ;
++-----------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |tunable_keccak_core|tunable_keccak:sha3|pr_state                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ;
++--------------------+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+---------------+--------------------+---------------+
+; Name               ; pr_state.stop ; pr_state.round24 ; pr_state.round23 ; pr_state.round22 ; pr_state.round21 ; pr_state.round20 ; pr_state.round19 ; pr_state.round18 ; pr_state.round17 ; pr_state.round16 ; pr_state.round15 ; pr_state.round14 ; pr_state.round13 ; pr_state.round12 ; pr_state.round11 ; pr_state.round10 ; pr_state.round9 ; pr_state.round8 ; pr_state.round7 ; pr_state.round6 ; pr_state.round5 ; pr_state.round4 ; pr_state.round3 ; pr_state.round2 ; pr_state.round1 ; pr_state.init ; pr_state.load_seed ; pr_state.idle ;
++--------------------+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+---------------+--------------------+---------------+
+; pr_state.idle      ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 0             ;
+; pr_state.load_seed ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 1                  ; 1             ;
+; pr_state.init      ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1             ; 0                  ; 1             ;
+; pr_state.round1    ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0             ; 0                  ; 1             ;
+; pr_state.round2    ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round3    ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round4    ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round5    ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round6    ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round7    ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round8    ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round9    ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round10   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round11   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round12   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round13   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round14   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round15   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round16   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round17   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round18   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round19   ; 0             ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round20   ; 0             ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round21   ; 0             ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round22   ; 0             ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round23   ; 0             ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.round24   ; 0             ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
+; pr_state.stop      ; 1             ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0             ; 0                  ; 1             ;
++--------------------+---------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+---------------+--------------------+---------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Protected by Synthesis                                                                                                                                                                                                                                    ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
+; Register Name                                                                                                                                       ; Protected by Synthesis Attribute or Preserve Register Assignment ; Not to be Touched by Netlist Optimizations ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|wrfull_eq_comp_lsb_mux_reg                                  ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|wrfull_eq_comp_msb_mux_reg                                  ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe17a[2] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe17a[0] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe17a[1] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe17a[5] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe17a[3] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe17a[4] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe16a[2] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe16a[0] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe16a[1] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe16a[5] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe16a[3] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15|dffe16a[4] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|rdemp_eq_comp_lsb_aeb                                       ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|rdemp_eq_comp_msb_aeb                                       ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe12a[2] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe12a[0] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe12a[1] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe12a[5] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe12a[3] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe12a[4] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe11a[2] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe11a[0] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe11a[1] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe11a[5] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe11a[3] ; yes                                                              ; yes                                        ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10|dffe11a[4] ; yes                                                              ; yes                                        ;
+; Total number of protected registers is 28                                                                                                           ;                                                                  ;                                            ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                             ;
++-----------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                                                                         ; Reason for Removal                     ;
++-----------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+; tunable_keccak:sha3|in_buffer[1408..1599]                                                                             ; Stuck at GND due to stuck port data_in ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|dffpipe_3dc:wraclr|dffe13a[0] ; Stuck at VCC due to stuck port data_in ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|dffpipe_3dc:wraclr|dffe14a[0] ; Stuck at VCC due to stuck port data_in ;
+; Total Number of Removed Registers = 194                                                                               ;                                        ;
++-----------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                                                                                                               ;
++-----------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------+
+; Register name                                                                                                         ; Reason for Removal        ; Registers Removed due to This Register                                                                                ;
++-----------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------+
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|dffpipe_3dc:wraclr|dffe13a[0] ; Stuck at VCC              ; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|dffpipe_3dc:wraclr|dffe14a[0] ;
+;                                                                                                                       ; due to stuck port data_in ;                                                                                                                       ;
++-----------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 6302  ;
+; Number of registers using Synchronous Clear  ; 3200  ;
+; Number of registers using Synchronous Load   ; 4992  ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 3027  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                                                                             ;
++--------------------------------------------------------------------------------------------------------------------------------+---------+
+; Inverted Register                                                                                                              ; Fan out ;
++--------------------------------------------------------------------------------------------------------------------------------+---------+
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_7cc:wrptr_g1p|parity7    ; 5       ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|rdemp_eq_comp_lsb_aeb                  ; 5       ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|rdemp_eq_comp_msb_aeb                  ; 5       ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_cu6:rdptr_g1p|counter5a0 ; 10      ;
+; dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|cntr_psd:cntr_b|counter_reg_bit0       ; 2       ;
+; Total number of inverted registers = 5                                                                                         ;         ;
++--------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------+
+; 3:1                ; 1408 bits ; 2816 LEs      ; 2816 LEs             ; 0 LEs                  ; Yes        ; |tunable_keccak_core|tunable_keccak:sha3|state_reg:reg_upper|q_state[1400] ;
+; 3:1                ; 896 bits  ; 1792 LEs      ; 0 LEs                ; 1792 LEs               ; Yes        ; |tunable_keccak_core|tunable_keccak:sha3|in_buffer[511]                    ;
+; 3:1                ; 128 bits  ; 256 LEs       ; 0 LEs                ; 256 LEs                ; Yes        ; |tunable_keccak_core|tunable_keccak:sha3|in_buffer[1407]                   ;
+; 5:1                ; 128 bits  ; 384 LEs       ; 0 LEs                ; 384 LEs                ; Yes        ; |tunable_keccak_core|tunable_keccak:sha3|in_buffer[896]                    ;
+; 4:1                ; 128 bits  ; 256 LEs       ; 0 LEs                ; 256 LEs                ; Yes        ; |tunable_keccak_core|tunable_keccak:sha3|in_buffer[1279]                   ;
+; 5:1                ; 128 bits  ; 384 LEs       ; 0 LEs                ; 384 LEs                ; Yes        ; |tunable_keccak_core|tunable_keccak:sha3|in_buffer[1150]                   ;
+; 3:1                ; 1600 bits ; 3200 LEs      ; 0 LEs                ; 3200 LEs               ; Yes        ; |tunable_keccak_core|tunable_keccak:sha3|out_buffer[97]                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated ;
++---------------------------------------+------------------------+------+----------------------------------------+
+; Assignment                            ; Value                  ; From ; To                                     ;
++---------------------------------------+------------------------+------+----------------------------------------+
+; AUTO_SHIFT_REGISTER_RECOGNITION       ; OFF                    ; -    ; -                                      ;
+; REMOVE_DUPLICATE_REGISTERS            ; OFF                    ; -    ; -                                      ;
+; SYNCHRONIZER_IDENTIFICATION           ; OFF                    ; -    ; -                                      ;
+; SYNCHRONIZATION_REGISTER_CHAIN_LENGTH ; 3                      ; -    ; -                                      ;
+; SYNCHRONIZER_IDENTIFICATION           ; FORCED_IF_ASYNCHRONOUS ; -    ; rdemp_eq_comp_lsb_aeb                  ;
+; PRESERVE_REGISTER                     ; ON                     ; -    ; rdemp_eq_comp_lsb_aeb                  ;
+; POWER_UP_LEVEL                        ; HIGH                   ; -    ; rdemp_eq_comp_lsb_aeb                  ;
+; SYNCHRONIZER_IDENTIFICATION           ; FORCED_IF_ASYNCHRONOUS ; -    ; rdemp_eq_comp_msb_aeb                  ;
+; PRESERVE_REGISTER                     ; ON                     ; -    ; rdemp_eq_comp_msb_aeb                  ;
+; POWER_UP_LEVEL                        ; HIGH                   ; -    ; rdemp_eq_comp_msb_aeb                  ;
+; SYNCHRONIZER_IDENTIFICATION           ; FORCED_IF_ASYNCHRONOUS ; -    ; rs_dgwp_reg                            ;
+; PRESERVE_REGISTER                     ; ON                     ; -    ; rs_dgwp_reg                            ;
+; SYNCHRONIZER_IDENTIFICATION           ; FORCED_IF_ASYNCHRONOUS ; -    ; wrfull_eq_comp_lsb_mux_reg             ;
+; PRESERVE_REGISTER                     ; ON                     ; -    ; wrfull_eq_comp_lsb_mux_reg             ;
+; SYNCHRONIZER_IDENTIFICATION           ; FORCED_IF_ASYNCHRONOUS ; -    ; wrfull_eq_comp_msb_mux_reg             ;
+; PRESERVE_REGISTER                     ; ON                     ; -    ; wrfull_eq_comp_msb_mux_reg             ;
+; SYNCHRONIZER_IDENTIFICATION           ; FORCED_IF_ASYNCHRONOUS ; -    ; ws_dgrp_reg                            ;
+; PRESERVE_REGISTER                     ; ON                     ; -    ; ws_dgrp_reg                            ;
++---------------------------------------+------------------------+------+----------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_cu6:rdptr_g1p ;
++----------------+-------+------+------------------------------------------------------------------------------------------------------------+
+; Assignment     ; Value ; From ; To                                                                                                         ;
++----------------+-------+------+------------------------------------------------------------------------------------------------------------+
+; POWER_UP_LEVEL ; HIGH  ; -    ; counter5a0                                                                                                 ;
+; POWER_UP_LEVEL ; LOW   ; -    ; parity6                                                                                                    ;
++----------------+-------+------+------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_7cc:wrptr_g1p ;
++----------------+-------+------+------------------------------------------------------------------------------------------------------------+
+; Assignment     ; Value ; From ; To                                                                                                         ;
++----------------+-------+------+------------------------------------------------------------------------------------------------------------+
+; POWER_UP_LEVEL ; HIGH  ; -    ; parity7                                                                                                    ;
++----------------+-------+------+------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|altsyncram_tr91:fifo_ram ;
++---------------------------------+--------------------+------+---------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                        ;
++---------------------------------+--------------------+------+---------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                         ;
++---------------------------------+--------------------+------+---------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp ;
++-----------------------------+------------------------+------+-----------------------------------------------------------------------------+
+; Assignment                  ; Value                  ; From ; To                                                                          ;
++-----------------------------+------------------------+------+-----------------------------------------------------------------------------+
+; X_ON_VIOLATION_OPTION       ; OFF                    ; -    ; -                                                                           ;
+; SYNCHRONIZER_IDENTIFICATION ; FORCED_IF_ASYNCHRONOUS ; -    ; -                                                                           ;
+; PRESERVE_REGISTER           ; ON                     ; -    ; -                                                                           ;
+; DONT_MERGE_REGISTER         ; ON                     ; -    ; -                                                                           ;
+; ADV_NETLIST_OPT_ALLOWED     ; NEVER_ALLOW            ; -    ; -                                                                           ;
++-----------------------------+------------------------+------+-----------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10 ;
++---------------------------------+-------+------+----------------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value ; From ; To                                                                                                             ;
++---------------------------------+-------+------+----------------------------------------------------------------------------------------------------------------+
+; AUTO_SHIFT_REGISTER_RECOGNITION ; OFF   ; -    ; -                                                                                                              ;
++---------------------------------+-------+------+----------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|dffpipe_3dc:wraclr ;
++---------------------------------+-------+------+----------------------------------------------------------------------------------+
+; Assignment                      ; Value ; From ; To                                                                               ;
++---------------------------------+-------+------+----------------------------------------------------------------------------------+
+; AUTO_SHIFT_REGISTER_RECOGNITION ; OFF   ; -    ; -                                                                                ;
++---------------------------------+-------+------+----------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp ;
++-----------------------------+------------------------+------+-----------------------------------------------------------------------------+
+; Assignment                  ; Value                  ; From ; To                                                                          ;
++-----------------------------+------------------------+------+-----------------------------------------------------------------------------+
+; X_ON_VIOLATION_OPTION       ; OFF                    ; -    ; -                                                                           ;
+; SYNCHRONIZER_IDENTIFICATION ; FORCED_IF_ASYNCHRONOUS ; -    ; -                                                                           ;
+; PRESERVE_REGISTER           ; ON                     ; -    ; -                                                                           ;
+; DONT_MERGE_REGISTER         ; ON                     ; -    ; -                                                                           ;
+; ADV_NETLIST_OPT_ALLOWED     ; NEVER_ALLOW            ; -    ; -                                                                           ;
++-----------------------------+------------------------+------+-----------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15 ;
++---------------------------------+-------+------+----------------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value ; From ; To                                                                                                             ;
++---------------------------------+-------+------+----------------------------------------------------------------------------------------------------------------+
+; AUTO_SHIFT_REGISTER_RECOGNITION ; OFF   ; -    ; -                                                                                                              ;
++---------------------------------+-------+------+----------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|cntr_psd:cntr_b ;
++----------------+-------+------+------------------------------------------------------------------------------------------------+
+; Assignment     ; Value ; From ; To                                                                                             ;
++----------------+-------+------+------------------------------------------------------------------------------------------------+
+; POWER_UP_LEVEL ; HIGH  ; -    ; counter_reg_bit0                                                                               ;
++----------------+-------+------+------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component ;
++-------------------------------------------+-------------+-------------------------------------------------+
+; Parameter Name                            ; Value       ; Type                                            ;
++-------------------------------------------+-------------+-------------------------------------------------+
+; ACF_DISABLE_EMBEDDED_TIMING_CONSTRAINT    ; FALSE       ; Untyped                                         ;
+; ACF_DISABLE_MLAB_RAM_USE                  ; FALSE       ; Untyped                                         ;
+; ADD_RAM_OUTPUT_REGISTER                   ; OFF         ; Untyped                                         ;
+; ADD_USEDW_MSB_BIT                         ; OFF         ; Untyped                                         ;
+; CLOCKS_ARE_SYNCHRONIZED                   ; FALSE       ; Untyped                                         ;
+; DELAY_RDUSEDW                             ; 1           ; Untyped                                         ;
+; DELAY_WRUSEDW                             ; 1           ; Untyped                                         ;
+; DISABLE_DCFIFO_EMBEDDED_TIMING_CONSTRAINT ; FALSE       ; Untyped                                         ;
+; ENABLE_ECC                                ; FALSE       ; Untyped                                         ;
+; LPM_NUMWORDS                              ; 256         ; Signed Integer                                  ;
+; LPM_SHOWAHEAD                             ; OFF         ; Untyped                                         ;
+; LPM_WIDTH                                 ; 16          ; Signed Integer                                  ;
+; LPM_WIDTH_R                               ; 128         ; Signed Integer                                  ;
+; LPM_WIDTHU                                ; 8           ; Signed Integer                                  ;
+; LPM_WIDTHU_R                              ; 5           ; Signed Integer                                  ;
+; MAXIMIZE_SPEED                            ; 5           ; Untyped                                         ;
+; OVERFLOW_CHECKING                         ; ON          ; Untyped                                         ;
+; RAM_BLOCK_TYPE                            ; AUTO        ; Untyped                                         ;
+; RDSYNC_DELAYPIPE                          ; 5           ; Signed Integer                                  ;
+; READ_ACLR_SYNCH                           ; OFF         ; Untyped                                         ;
+; UNDERFLOW_CHECKING                        ; ON          ; Untyped                                         ;
+; USE_EAB                                   ; ON          ; Untyped                                         ;
+; WRITE_ACLR_SYNCH                          ; ON          ; Untyped                                         ;
+; WRSYNC_DELAYPIPE                          ; 5           ; Signed Integer                                  ;
+; CBXI_PARAMETER                            ; dcfifo_i5q1 ; Untyped                                         ;
++-------------------------------------------+-------------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "tunable_keccak:sha3|state_reg:reg_lower" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; ena  ; Input ; Info     ; Stuck at VCC                              ;
++------+-------+----------+-------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "tunable_keccak:sha3|keccak_sponge_round:c" ;
++-----------------------+-------+----------+----------------------------+
+; Port                  ; Type  ; Severity ; Details                    ;
++-----------------------+-------+----------+----------------------------+
+; iota_constant[1..31]  ; Input ; Info     ; Stuck at GND               ;
+; iota_constant[33..47] ; Input ; Info     ; Stuck at GND               ;
+; iota_constant[49..55] ; Input ; Info     ; Stuck at GND               ;
+; iota_constant[57..59] ; Input ; Info     ; Stuck at GND               ;
+; iota_constant[61]     ; Input ; Info     ; Stuck at GND               ;
++-----------------------+-------+----------+----------------------------+
+
+
++----------------------------------------+
+; Port Connectivity Checks: "dsffo:fifo" ;
++------+-------+----------+--------------+
+; Port ; Type  ; Severity ; Details      ;
++------+-------+----------+--------------+
+; aclr ; Input ; Info     ; Stuck at GND ;
++------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 6302                        ;
+;     ENA               ; 19                          ;
+;     ENA SCLR          ; 1216                        ;
+;     ENA SCLR SLD      ; 384                         ;
+;     ENA SLD           ; 1408                        ;
+;     SCLR SLD          ; 1600                        ;
+;     SLD               ; 1600                        ;
+;     plain             ; 75                          ;
+; arriav_io_obuf        ; 128                         ;
+; arriav_lcell_comb     ; 3949                        ;
+;     arith             ; 4                           ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 3                           ;
+;     normal            ; 3945                        ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 169                         ;
+;         3 data inputs ; 600                         ;
+;         4 data inputs ; 834                         ;
+;         5 data inputs ; 1793                        ;
+;         6 data inputs ; 545                         ;
+; boundary_port         ; 155                         ;
+; stratixv_ram_block    ; 16                          ;
+;                       ;                             ;
+; Max LUT depth         ; 3.30                        ;
+; Average LUT depth     ; 1.58                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:12     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Mon Jan 02 05:19:02 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off tunable_keccak_core -c tunable_keccak_core
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 8 design units, including 4 entities, in source file tunable_keccak_core.vhd
+    Info (12022): Found design unit 1: keccak_sponge_round-arc File: C:/FPGA/tunable_keccak_core.vhd Line: 17
+    Info (12022): Found design unit 2: state_reg-arc File: C:/FPGA/tunable_keccak_core.vhd Line: 93
+    Info (12022): Found design unit 3: tunable_keccak-ar File: C:/FPGA/tunable_keccak_core.vhd Line: 131
+    Info (12022): Found design unit 4: tunable_keccak_core-arr File: C:/FPGA/tunable_keccak_core.vhd Line: 592
+    Info (12023): Found entity 1: keccak_sponge_round File: C:/FPGA/tunable_keccak_core.vhd Line: 7
+    Info (12023): Found entity 2: state_reg File: C:/FPGA/tunable_keccak_core.vhd Line: 86
+    Info (12023): Found entity 3: tunable_keccak File: C:/FPGA/tunable_keccak_core.vhd Line: 118
+    Info (12023): Found entity 4: tunable_keccak_core File: C:/FPGA/tunable_keccak_core.vhd Line: 581
+Info (12127): Elaborating entity "tunable_keccak_core" for the top level hierarchy
+Warning (12125): Using design file dsffo.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: dsffo-SYN File: C:/FPGA/dsffo.vhd Line: 59
+    Info (12023): Found entity 1: dsffo File: C:/FPGA/dsffo.vhd Line: 43
+Info (12128): Elaborating entity "dsffo" for hierarchy "dsffo:fifo" File: C:/FPGA/tunable_keccak_core.vhd Line: 617
+Info (12128): Elaborating entity "dcfifo_mixed_widths" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component" File: C:/FPGA/dsffo.vhd Line: 103
+Info (12130): Elaborated megafunction instantiation "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component" File: C:/FPGA/dsffo.vhd Line: 103
+Info (12133): Instantiated megafunction "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component" with the following parameter: File: C:/FPGA/dsffo.vhd Line: 103
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_numwords" = "256"
+    Info (12134): Parameter "lpm_showahead" = "OFF"
+    Info (12134): Parameter "lpm_type" = "dcfifo_mixed_widths"
+    Info (12134): Parameter "lpm_width" = "16"
+    Info (12134): Parameter "lpm_widthu" = "8"
+    Info (12134): Parameter "lpm_widthu_r" = "5"
+    Info (12134): Parameter "lpm_width_r" = "128"
+    Info (12134): Parameter "overflow_checking" = "ON"
+    Info (12134): Parameter "rdsync_delaypipe" = "5"
+    Info (12134): Parameter "read_aclr_synch" = "OFF"
+    Info (12134): Parameter "underflow_checking" = "ON"
+    Info (12134): Parameter "use_eab" = "ON"
+    Info (12134): Parameter "write_aclr_synch" = "ON"
+    Info (12134): Parameter "wrsync_delaypipe" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/dcfifo_i5q1.tdf
+    Info (12023): Found entity 1: dcfifo_i5q1 File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 43
+Info (12128): Elaborating entity "dcfifo_i5q1" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/dcfifo_mixed_widths.tdf Line: 79
+Info (12021): Found 1 design units, including 1 entities, in source file db/a_graycounter_cu6.tdf
+    Info (12023): Found entity 1: a_graycounter_cu6 File: C:/FPGA/db/a_graycounter_cu6.tdf Line: 25
+Info (12128): Elaborating entity "a_graycounter_cu6" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_cu6:rdptr_g1p" File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 56
+Info (12021): Found 1 design units, including 1 entities, in source file db/a_graycounter_7cc.tdf
+    Info (12023): Found entity 1: a_graycounter_7cc File: C:/FPGA/db/a_graycounter_7cc.tdf Line: 25
+Info (12128): Elaborating entity "a_graycounter_7cc" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|a_graycounter_7cc:wrptr_g1p" File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 57
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_tr91.tdf
+    Info (12023): Found entity 1: altsyncram_tr91 File: C:/FPGA/db/altsyncram_tr91.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_tr91" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|altsyncram_tr91:fifo_ram" File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 58
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_synch_pipe_tnl.tdf
+    Info (12023): Found entity 1: alt_synch_pipe_tnl File: C:/FPGA/db/alt_synch_pipe_tnl.tdf Line: 27
+Info (12128): Elaborating entity "alt_synch_pipe_tnl" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp" File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 74
+Info (12021): Found 1 design units, including 1 entities, in source file db/dffpipe_ed9.tdf
+    Info (12023): Found entity 1: dffpipe_ed9 File: C:/FPGA/db/dffpipe_ed9.tdf Line: 25
+Info (12128): Elaborating entity "dffpipe_ed9" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_tnl:rs_dgwp|dffpipe_ed9:dffpipe10" File: C:/FPGA/db/alt_synch_pipe_tnl.tdf Line: 35
+Info (12021): Found 1 design units, including 1 entities, in source file db/dffpipe_3dc.tdf
+    Info (12023): Found entity 1: dffpipe_3dc File: C:/FPGA/db/dffpipe_3dc.tdf Line: 25
+Info (12128): Elaborating entity "dffpipe_3dc" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|dffpipe_3dc:wraclr" File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 75
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_synch_pipe_unl.tdf
+    Info (12023): Found entity 1: alt_synch_pipe_unl File: C:/FPGA/db/alt_synch_pipe_unl.tdf Line: 27
+Info (12128): Elaborating entity "alt_synch_pipe_unl" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp" File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 76
+Info (12021): Found 1 design units, including 1 entities, in source file db/dffpipe_fd9.tdf
+    Info (12023): Found entity 1: dffpipe_fd9 File: C:/FPGA/db/dffpipe_fd9.tdf Line: 25
+Info (12128): Elaborating entity "dffpipe_fd9" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|alt_synch_pipe_unl:ws_dgrp|dffpipe_fd9:dffpipe15" File: C:/FPGA/db/alt_synch_pipe_unl.tdf Line: 35
+Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_ru5.tdf
+    Info (12023): Found entity 1: cmpr_ru5 File: C:/FPGA/db/cmpr_ru5.tdf Line: 23
+Info (12128): Elaborating entity "cmpr_ru5" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|cmpr_ru5:rdempty_eq_comp1_lsb" File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 77
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_psd.tdf
+    Info (12023): Found entity 1: cntr_psd File: C:/FPGA/db/cntr_psd.tdf Line: 28
+Info (12128): Elaborating entity "cntr_psd" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|cntr_psd:cntr_b" File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 85
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_5r7.tdf
+    Info (12023): Found entity 1: mux_5r7 File: C:/FPGA/db/mux_5r7.tdf Line: 23
+Info (12128): Elaborating entity "mux_5r7" for hierarchy "dsffo:fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_i5q1:auto_generated|mux_5r7:rdemp_eq_comp_lsb_mux" File: C:/FPGA/db/dcfifo_i5q1.tdf Line: 86
+Info (12128): Elaborating entity "tunable_keccak" for hierarchy "tunable_keccak:sha3" File: C:/FPGA/tunable_keccak_core.vhd Line: 618
+Info (12128): Elaborating entity "state_reg" for hierarchy "tunable_keccak:sha3|state_reg:reg_upper" File: C:/FPGA/tunable_keccak_core.vhd Line: 542
+Info (12128): Elaborating entity "keccak_sponge_round" for hierarchy "tunable_keccak:sha3|keccak_sponge_round:c" File: C:/FPGA/tunable_keccak_core.vhd Line: 544
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "iterate" File: C:/FPGA/tunable_keccak_core.vhd Line: 585
+Info (21057): Implemented 7401 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 26 input pins
+    Info (21059): Implemented 129 output pins
+    Info (21061): Implemented 7230 logic cells
+    Info (21064): Implemented 16 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 4937 megabytes
+    Info: Processing ended: Mon Jan 02 05:19:33 2023
+    Info: Elapsed time: 00:00:31
+    Info: Total CPU time (on all processors): 00:00:53
+
+
